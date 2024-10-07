@@ -1,0 +1,30 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+
+int main(void)
+{
+	int i = 0;
+	int ten = 0;
+	int num[100] = {0};
+	int x, y;
+	while (scanf("%d", &ten) != EOF)
+	{
+		if (ten < 0)
+			continue;
+		for (x = 0; ten>0; x++)
+		{
+				num[x] = ten % 8;
+				ten /= 8;
+		}
+		printf("%d",ten);
+		for (y = x-1; y >= 0; y--)
+		{
+				printf("%d",num[y]);
+		}
+		printf("\n");
+		i++;
+		if (i > 500)
+			break;
+	}
+	return 0;
+}
