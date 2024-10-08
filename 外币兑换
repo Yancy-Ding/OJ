@@ -1,0 +1,28 @@
+#include <stdio.h>
+int main(void)
+{
+    double D,R;
+    double rate[12] = { 0 };
+    int i = 0, x = 0, y = 0;
+    double ai=0;
+    while (scanf("%lf", &D) >= 1.00)
+    {
+        for (x=0; x < 12; x++)
+        {
+            scanf("%lf", &rate[x]);
+        }
+        for (y = 0; y < 12; y++)
+        {
+            if (ai > rate[y])
+                ;
+            else
+                ai = rate[y];
+        }
+        R = D * ai;
+        printf("%.2lf",R);
+        i++；
+        if (i>500)
+            break;
+    }
+    return 0;
+}
