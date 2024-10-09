@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int m, n;
+    int i = 0;
+    while (scanf("%d %d",&m,&n) != EOF)
+    {
+        int count = 0;
+        int x[10] = { 0 };
+        int y[10] = { 0 };
+        int sum[11] = { 0 };
+        for (int p = 0; p < 10; p++)
+        {
+            x[p] = m % 10;
+            y[p] = n % 10; 
+            sum[p] = x[p] + y[p];
+            m /= 10;
+            n /= 10;
+        }
+        for (int p = 0; p < 11; p++)
+        {
+            if (sum[p] > 9)
+            {
+                count++;
+                sum[p + 1] += 1;
+            }
+        }
+        printf("%d\n",count);
+        i++;
+        if (i == 1000)
+            break;
+    }
+    return 0;
+}
