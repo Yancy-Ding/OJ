@@ -1,0 +1,49 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    int i = 0;
+    while (scanf("%d",&n) != EOF)
+    {
+        int former[100000] = { 1 };
+        int later[100000] = { 0 };
+        if (n > 2 && n % 2 == 0)
+        {
+            printf("Yes");
+        }
+        else
+        {
+            for (int x = 0; x < (n / 2) + 1; x++)
+            {
+                later[x] = n - former[x];
+                former[x] = x + 1;
+            }
+            for (int y = 0; y< n; y++)
+            {
+                if (later[y] % 2 == 0 && former[y] % 2 == 0)
+                {
+                    for (int z = 0; z < n; z++)
+                    {
+                        if (later[z] % 2 == 1 && former[z] % 2 == 1)
+                        {
+                            printf("Yes");
+                            break;
+                        }
+                    }
+                    break;
+                }
+                else
+                {
+                    printf("No");
+                    break;
+                }
+            }
+        }
+        printf("\n");
+        i++;
+        if (i == 10000)
+            break;
+    }
+    return 0;
+}
