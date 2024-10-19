@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+int main() 
+{
+    long long x;
+    
+    while (scanf("%lld", &x) != EOF) 
+    { // 读取输入直到文件结束
+        if (x == 0) break; // 如果输入为0则退出循环
+        
+        for (long long i = 2; i * i <= x; ++i) 
+        {
+            while (x % i == 0) 
+            { // 当x能被i整除时
+                printf("%lld ", i); // 输出质因数i
+                x /= i; // 将x除以i
+            }
+        }
+        
+        if (x > 1) 
+        { // 如果x大于1，那么它本身就是一个质数
+            printf("%lld ", x);
+        }
+        
+        printf("\n"); // 每组输出一行
+    }
+    
+    return 0;
+}
