@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main (void)
+{
+    double m,n;
+    while (scanf ("%lf %lf",&m,&n)!=EOF)
+    {
+        double m1,n1,m2,n2;
+        m1=(int)m;
+        m2=m-m1;
+        n1=(int)n;
+        n2=n-n1;
+        m=m1+n2;
+        n=n1+m2;
+        printf ("%.5lf %.5lf\n",m,n);
+    }
+    return 0;
+}
