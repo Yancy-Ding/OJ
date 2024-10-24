@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+    long long x1, y1, x2, y2, x3, y3, x4, y4;
+    while (scanf("%lld %lld %lld %lld %lld %lld %lld %lld",&x1,&y1,&x2,&y2,&x3,&y3,&x4,&y4) != EOF)
+    {
+        long long B1, B2, C1, C2, D1, D2;
+        B1 = x2 - x1;
+        B2 = y2 - y1;
+        C1= x3 - x1;
+        C2 = y3 - y1;
+        D1 = x4 - x1;
+        D2 = y4 - y1;
+        if (C1 == D1 + B1 && C2 == D2 + B2)
+        {
+            printf("parallelogram\n");
+            long long m;
+            double l1, l2;
+            m = B1 * D1 + B2 * D2;
+            l1 = (B1 * B1) + (B2 * B2);
+            l2 = (D1 * D1) + (D2 * D2);
+            if (m == 0)
+                printf("rectangle\n");
+            if (l1 == l2)
+                printf("rhombus\n");
+            if (m == 0 && l1 == l2)
+                printf("square\n");
+        }
+        else
+        {
+            long long A1, A2, F1, F2, x, y, p, q;
+            A1 = x3 - x2;
+            A2 = y3 - y2;
+            F1 = x3 - x4;
+            F2 = y3 - y4;
+            x = B1 * F2;
+            y = B2 * F1;
+            p = A1 * D2;
+            q = A2 * D1;
+            if (x == y && p != q)
+                printf("trapezium\n");
+            else if (x != y && p == q)
+                printf("trapezium\n");
+            else if (x!=y&&p!=q)
+                printf("quadrilateral\n");
+        }
+    }
+    return 0;
+}
