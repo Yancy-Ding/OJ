@@ -1,0 +1,23 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+
+int main(void)
+{
+    long n;
+    int a,bc,def,ghij;
+    while (scanf("%ld",&n) != EOF)
+    {
+        ghij=n%10000;
+        n /=10000;
+        def=n%1000;
+        n /= 1000;
+        bc=n%100;
+        n /=100;
+        a=n;
+        printf ("%d   \n",a);
+        printf ("  %2d\n",bc);
+        printf ("%3d \n",def);
+        printf ("%4d\n",ghij);
+    }
+    return 0;
+}
