@@ -1,0 +1,45 @@
+#include <stdio.h>
+#define DIVISOR 16
+
+int main ()
+{
+    int n;
+    while (scanf ("%d",&n)!=EOF)
+    {
+        if (n==0)
+        {
+            goto done;
+        }
+        int sum=0,yushu=0,shang=0;
+        while (1)
+        {
+            yushu=n%DIVISOR;
+            shang=n/DIVISOR;
+            if (yushu>=0&&yushu<10)
+            {
+                sum +=yushu;
+            }
+            if (shang==0)
+            {
+                break;
+            }
+            else if (shang>0&&shang<10)
+            {
+                sum +=shang;
+                break;
+            }
+            else if (shang>15)
+            {
+                n /= DIVISOR;
+                continue;
+            }
+            else
+            {
+                break;
+            }
+        }
+        printf ("%d\n",sum);
+    }
+    done:
+    return 0;
+}
