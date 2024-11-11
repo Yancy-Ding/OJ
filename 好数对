@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main ()
+{
+    int n;
+    while (scanf ("%d",&n)!=EOF)
+    {
+        long mult,sum;
+        int count =0;
+        for (int i=1;i<n;i++)
+        {
+            for (int j=(i+1);j<=n;j++)
+            {
+                mult = i*j;
+                sum =i+j;
+                if (mult%sum==0)
+                {
+                    count ++;
+                }
+            }
+        }
+        printf  ("%d\n",count);
+    }
+    return 0;
+}
