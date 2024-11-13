@@ -1,0 +1,52 @@
+#include <stdio.h>
+
+int isLeapYear(int year) 
+{
+    return (year % 4 == 0 && year % 100!= 0) || (year % 400 == 0);
+}
+
+int daysFromStart(int year, int month, int day) 
+{
+    int days[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+    int totalDays = 0;
+    for (int y = 1; y < year; y++) 
+    {
+        totalDays += isLeapYear(y)? 366 : 365;
+    }
+    for (int m = 1; m < month; m++) 
+    {
+        totalDays += days[m];
+        if (m == 2 && isLeapYear(year)) 
+        {
+            totalDays += 1;
+        }
+    }
+    totalDays += day;
+    return totalDays;
+}
+
+int main() 
+{
+    int T;
+    while (scanf("%d", &T)!=EOF)
+    {
+        int year[10000],month[10000],day[10000];
+        for (int i=0;i<T;i++)
+        {
+            scanf ("%d-%d-%d",&year[i],&month[i],&day[i]);
+        }
+        for (int i = 0; i < T; i++) 
+        {
+            int daysBefore = daysFromStart(year[i], month[i], day[i]);
+            int days2021 = daysFromStart(2021, 1, 1);
+            int result = daysBefore - days2021;
+            if (result < 0) 
+            {
+                result = -result;
+            }
+            result ++;
+            printf ("%d\n",result);
+        }
+    }
+    return 0;
+}
