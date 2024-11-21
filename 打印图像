@@ -1,0 +1,77 @@
+#include <stdio.h>
+// 计算杨辉三角中的一个元素
+int binomialCoeff(int n, int k) 
+{
+    int dp[40][40];  
+    for (int i = 0; i <= n; i++) 
+    {
+        for (int j = 0; j <= (i < k? i : k); j++) 
+        {
+            if (j == 0 || j == i) 
+            {
+                dp[i][j] = 1;
+            } else 
+            {
+                dp[i][j] = dp[i - 1][j - 1] + dp[i - 1][j];
+            }
+        }
+    }
+    return dp[n][k];
+}
+// 判断一个数是否为质数
+int isPrime(int num) 
+{
+    if (num <= 1) return 0;
+    if (num <= 3) return 1;
+    if (num % 2 == 0 || num % 3 == 0) return 0;
+    int i = 5;
+    while (i * i <= num) 
+    {
+        if (num % i == 0 || num % (i + 2) == 0) return 0;
+        i += 6;
+    }
+    return 1;
+}
+
+// 返回第n个质数
+int nthPrime(int n) 
+{
+    int count = 0;
+    int num = 2;
+    while (count < n) 
+    {
+        if (isPrime(num)) 
+        {
+            count++;
+        }
+        if (count < n) 
+        {
+            num++;
+        }
+    }
+    return num;
+}
+
+int main() 
+{
+    int n;
+    while (scanf ("%d",&n)!=EOF)
+    {
+        int x=1;
+        for (int i=0;i<n;i++)
+        {
+            for (int j=0;j<=i;j++)
+            {
+                printf ("%d ",binomialCoeff(i,j));
+            }
+            for (int j=n-i-1;j>0;j--)
+            {
+                printf ("%d ",nthPrime (x));
+                x++;
+            }
+            printf ("\n");
+        }
+        printf ("\n");
+    }
+    return 0;
+}
